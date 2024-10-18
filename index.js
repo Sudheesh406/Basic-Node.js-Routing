@@ -9,6 +9,8 @@ http.createServer((req,res)=>{
         fs.readFile("signup.html",(err,data)=>{
             if(err){
                 console.log(err,"error found...");
+                res.writeHead(500, { "content-type": "text/html" });
+                res.end();
             }else{
                 res.writeHead(200,{"content-type":"text/html"});
                 res.write(data)
@@ -19,6 +21,8 @@ http.createServer((req,res)=>{
         fs.readFile("index.html",(err,data)=>{
             if(err){
                 console.log(err,"error found...");
+                res.writeHead(500, { "content-type": "text/html" });
+                res.end();
             }if(data){
                 res.writeHead(200,{"content-type":"text/html"});
                 res.write(data+"<h1>"+q.query.username+"</h>");
@@ -38,4 +42,3 @@ http.createServer((req,res)=>{
         console.log("Server Running...")
     }
 });
-
